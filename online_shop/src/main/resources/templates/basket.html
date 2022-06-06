@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Basket - Amazing Model Store</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+</head>
+<body>
+	<div>
+	  <h1>YOUR BASKET</h1>
+	</div>
+	<div><div>Basket products:</div>
+	     <ul>
+			<li th:each="productChosen : ${basket.products}">
+			  <div th:text="${productChosen.name}"></div>
+			  <img th:src="@{'/images' + '/' + ${productChosen.name} + '.jpg'}"/>
+			  <div>Unit price: 
+			    <div th:text="${productChosen.price}"></div>
+			  </div>
+			  <div>Quantity chosen: 
+			    <div th:text="${productChosen.quantityChosen}"></div>
+			    <div><a th:href="@{'/onemore' + '/' + ${productChosen.id}}"><button> + </button></a></div>
+			    <div><a th:href="@{'/oneless' + '/' + ${productChosen.id}}"><button> - </button></a></div>
+			  </div>
+			</li> 
+		 </ul>
+	    <div>Total: </div>
+	<div th:text="${basket.total}">...</div>
+	<div><a th:href="@{'/tobuy' + '/' + ${basket.id}}">BUY</a></div>
+	<div><a th:href="@{'/tohome' + '/' + ${basket.id}}">HOMEPAGE</a></div>
+  </div>
+</body>
+</html>

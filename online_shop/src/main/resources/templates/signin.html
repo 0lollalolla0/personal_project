@@ -9,7 +9,7 @@
   <div class = container>
     <section id = content>
       <h1>Sign in</h1>
-      <form th:action="@{/successfulregistration}" method="post">
+      <form th:action="@{/signin}" method="post">
         <div>First name: <input type="text" th:field=*{user.firstName}/><span th:if="${#fields.hasErrors('user.firstName')}" th:errors="*{user.firstName}"></span></div>
         <div>Last name: <input type="text" th:field=*{user.lastName}/><span th:if="${#fields.hasErrors('user.lastName')}" th:errors="*{user.lastName}"></span></div>
         <div>Street: <input type="text" th:field=*{address.street}/><span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span></div>

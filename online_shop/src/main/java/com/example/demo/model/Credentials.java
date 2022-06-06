@@ -34,8 +34,17 @@ public class Credentials {
 	@Column(nullable = false)
 	private String role;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	private User user;
+
+	public Credentials(String username, String email, String password, String role) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.role = role;
+	}
+	
+	public Credentials() {}
 
 	public Long getId() {
 		return id;

@@ -1,15 +1,29 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class ProductChosen extends Product {
+public class ProductChosen {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
-	private Long id = super.getId();
+	@ManyToOne
+	private Product product;
 	
-	@Min(1)
 	private Integer quantityChosen;
+	
+	public ProductChosen() {}
+	
+	public ProductChosen(Product p, Integer q) {
+		this.product = p;
+		this.quantityChosen = q;
+	}
 
 	public Integer getQuantityChosen() { return quantityChosen; }
 
@@ -21,6 +35,22 @@ public class ProductChosen extends Product {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Float getPrice() {
+		return product.getPrice();
+	}
+	
+	public String getName() {
+		return this.product.getName();
 	}
 	
 }

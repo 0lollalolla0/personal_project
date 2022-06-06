@@ -10,12 +10,13 @@
 
 	<div class="block1.1">
 	  <h1>AMAZING MODEL STORE</h1>
-	  <img th:src="@{/images/81cmdiV2zAL._AC_SL1500_.jpg}" width="1500" height="500"/>
+	  <img th:src="@{/images/init.jpg}" width="1500" height="500"/>
 	</div>
 
 	<div class="block1.1">
+	    <div><a th:href="@{'/toyouraccount' + '/' + ${user.id}}"><button type="submit">Account</button></a></div>
 	    <div><a th:href="@{/logout}"><button type="submit">Log Out</button></a></div>
-	    <div><a th:href="@{/address}"><button type="submit">Change address</button></a></div>
+	    <div><a th:href="@{'/basketof' + '/' + ${user.id}}"><button type="submit">Your basket</button></a></div>	   
 	</div>
 	
 	<!-- <div class="text"><h3>This amazing store has everything you would want in your model collection. We have the most complete and detailed kits, both for beginners and for the most advanced in this hobby.
@@ -31,15 +32,25 @@
 		    </div>
 		</div>
 	</nav>
+	<div>
+		<ul>
+		   <li th:each="product : ${products}">
+			 <div><img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}"/>
+			   <div th:text="${product.name}">...</div>
+			   <a href="product.html" th:href="@{'/openproducts' + '/' + ${product.id}}">PUT IN THE BASKET</a>
+			   <a th:href="@{'/toput' + '/' + ${product.id}}">PUT IN THE BASKET</a></div>
+			</li>
+		</ul>
+   </div>
 	
-	<div class="products">
+	<!-- <div class="products">
     <div class="product-card">
         <div class="product-image">
             <img th:src="@{/images/139958288_max.jpg}" class="product-thumb" alt="">
             <button class="card-btn">BUY</button>
         </div>
         <div class="product-info">
-            <h2 class="product-brand">LEOPARD 2A6/A6M</h2>
+            <h2 class="product-brand">LEOPARD_2A6/A6M</h2>
             <p class="product-short-des">Enjoy the last model of the Heer's pride'</p>
             <span class="price">$20</span>
         </div>
@@ -98,13 +109,13 @@
             <span class="price">$20</span>
         </div>
     </div>
-	</div>
+	</div> -->
 	
 	<div class="socialMedia">
 		<ul>
-			<li><a th:href="@{mailto:angelote678@gmail.com}" class="fa fa-google">>E-MAIL</a></li>
-			<li><a th:href="@{https://twitter.com/Angelote678}" class="fa fa-twitter">TWITTER</a></li>
-			<li><a th:href="@{https://www.instagram.com/angel_alm__/}" class="fa fa-instagram">INSTAGRAM</a></li>
+			<li><a th:href="@{mailto:angelote678@gmail.com}" class="fa fa-google"> E-MAIL</a></li>
+			<li><a th:href="@{https://twitter.com/Angelote678}" class="fa fa-twitter"> TWITTER</a></li>
+			<li><a th:href="@{https://www.instagram.com/angel_alm__/}" class="fa fa-instagram"> INSTAGRAM</a></li>
 			
 		</ul>
 		<div class="generic"> TLF: +34 651671557</div>

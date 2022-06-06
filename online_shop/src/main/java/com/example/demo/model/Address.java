@@ -25,6 +25,15 @@ public class Address {
 	@NotBlank
 	private String state;
 
+	public Address() {}
+	
+	public Address(String street, Integer number, String city, String state) {
+		this.street = street;
+		this.number = number;
+		this.city = city;
+		this.state = state;
+	}
+	
 	public Long getId() { return id; }
 
 	public void setId(Long id) { this.id = id; }

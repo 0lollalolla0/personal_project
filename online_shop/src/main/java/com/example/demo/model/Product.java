@@ -17,6 +17,8 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	private String name;
+
 	@Column(nullable = false)
 	private Float price;
 	
@@ -43,5 +45,21 @@ public class Product {
 	public Integer getQuantityAvailable() { return quantityAvailable; }
 
 	public void setQuantityAvailable(Integer quantityAvailable) { this.quantityAvailable = quantityAvailable; }
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 	
 }

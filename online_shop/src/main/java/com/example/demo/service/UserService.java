@@ -21,7 +21,7 @@ public class UserService {
 	public void save(User user) { ur.save(user); }
 	
 	//Interrogazione, non transazionale
-	public User findById (String username) { return ur.findById(username).get(); }
+	public User findById (Long id) { return ur.findById(id).get(); }
 	
 	public List<User> findAll() {
 		List<User> utenti = new ArrayList<User>();

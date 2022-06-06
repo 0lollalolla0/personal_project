@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -33,6 +34,10 @@ public class User {
 	
 	@OneToMany
 	private List<Order> orders;
+	
+	public User() {
+		this.orders = new ArrayList<>();
+	}
 	
 	public Long getId() {
 		return id;

@@ -22,8 +22,15 @@ public class Order {
 	
 	private Float total;
 
+	public Order() { }
+	
+	public Order(List<ProductChosen> products, Float total) {
+		this.products = products;
+		this.total = total;
+	}
+	
 	public List<ProductChosen> getProducts() { return products; }
 
-	public Float getPrice() { return total; }
+	public Float getTotal() { return total; }
 
 }
