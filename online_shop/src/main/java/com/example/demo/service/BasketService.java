@@ -18,4 +18,9 @@ public class BasketService {
 	public void save(Basket b) {
 		this.br.save(b);
 	}
+
+	@Transactional
+	public void deleteById(Basket b) {
+		this.br.deleteById(b.getId());
+	}
 }

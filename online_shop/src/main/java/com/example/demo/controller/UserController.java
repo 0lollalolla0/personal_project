@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -158,52 +160,72 @@ public class UserController {
 	public String oneMore(@PathVariable("id") Long id, Model model) {
 		Basket b = this.currentUser.getBasket();
 		ProductChosen p = this.pcs.findById(id);
-		if(p.getProduct().getQuantityAvailable() < (p.getQuantityChosen()+1)) {
-			return "prodottoterminato.html"; 
-		}
-		p.setQuantityChosen(p.getQuantityChosen()+1);
-		this.pcs.save(p);
-		List<ProductChosen> products = b.getProducts();
-		Integer i = 0;
-		for(ProductChosen pc : products) {
-			if(pc.getName().equals(p.getName())) {
-				products.set(i, p);
+		if(p.getProduct().getQuantityAvailable() >= (p.getQuantityChosen()+1)) {
+			p.setQuantityChosen(p.getQuantityChosen()+1);
+			this.pcs.save(p);
+			List<ProductChosen> products = b.getProducts();
+			Integer i = 0;
+			for(ProductChosen pc : products) {
+				if(pc.getName().equals(p.getName())) {
+					products.set(i, p);
+				}
+				i++;
 			}
-			i++;
+			b.setProducts(products);
+			b.calculateTotal();
+			this.bs.save(b);
+			this.currentUser.setBasket(b);
+			this.us.save(this.currentUser);
 		}
-		b.setProducts(products);
-		b.calculateTotal();
-		this.bs.save(b);
-		this.currentUser.setBasket(b);
-		this.us.save(this.currentUser);
 		model.addAttribute("basket", b);
 		return "basket.html";
 	}
 	
-//	@GetMapping("/oneless/{id}")
-//	public String oneLess(@PathVariable("id") Long id, Model model) {
-//		Basket b = this.currentUser.getBasket();
-//		ProductChosen p = this.pcs.findById(id);
-//		if(p.getProduct().getQuantityAvailable() < (p.getQuantityChosen()+1)) {
-//			return "prodottoterminato.html"; 
-//		}
-//		p.setQuantityChosen(p.getQuantityChosen()+1);
-//		this.pcs.save(p);
-//		List<ProductChosen> products = b.getProducts();
-//		Integer i = 0;
-//		for(ProductChosen pc : products) {
-//			if(pc.getName().equals(p.getName())) {
-//				products.set(i, p);
-//			}
-//			i++;
-//		}
-//		b.setProducts(products);
-//		b.calculateTotal();
-//		this.bs.save(b);
-//		this.currentUser.setBasket(b);
-//		this.us.save(this.currentUser);
-//		model.addAttribute("basket", b);
-//		return "basket.html";
-//	}
+	@GetMapping("/oneless/{id}")
+	public String oneLess(@PathVariable("id") Long id, Model model) {
+		Basket b = this.currentUser.getBasket();
+		ProductChosen p = this.pcs.findById(id);
+		if(p.getQuantityChosen()-1 > 0) {
+			p.setQuantityChosen(p.getQuantityChosen()-1);
+			this.pcs.save(p);
+			List<ProductChosen> products = b.getProducts();
+			Integer i = 0;
+			for(ProductChosen pc : products) {
+				if(pc.getName().equals(p.getName())) {
+					products.set(i, p);
+				}
+				i++;
+			}
+			b.setProducts(products);
+			b.calculateTotal();
+			this.bs.save(b);
+			this.currentUser.setBasket(b);
+			this.us.save(this.currentUser); 
+		}
+		model.addAttribute("basket", b);
+		return "basket.html";
+	}
+	
+	@GetMapping("/todeleteproduct/{id}")
+	public String deleteFromBasket(@PathVariable("id") Long id, Model model) {
+		Basket b = this.currentUser.getBasket();
+		ProductChosen p = this.pcs.findById(id);
+		
+		List<ProductChosen> products = b.getProducts();
+		for(Iterator<ProductChosen> it = products.iterator(); it.hasNext();) {
+			ProductChosen pc = it.next();
+			if(pc.getName().equals(p.getName())) {
+				it.remove();
+			}
+		}
+		b.setProducts(products);
+	    this.bs.save(b);
+	    b.calculateTotal();
+		this.currentUser.setBasket(b);
+		
+		this.pcs.deleteById(id);
+		model.addAttribute("basket", b);
+		return "basket.html";
+	}
 	
 }

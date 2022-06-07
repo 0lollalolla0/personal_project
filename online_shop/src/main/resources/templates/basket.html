@@ -14,7 +14,7 @@
 	     <ul>
 			<li th:each="productChosen : ${basket.products}">
 			  <div th:text="${productChosen.name}"></div>
-			  <img th:src="@{'/images' + '/' + ${productChosen.name} + '.jpg'}"/>
+			  <img th:src="@{'/images' + '/' + ${productChosen.name} + '.jpg'}" height="70" width="70"/>
 			  <div>Unit price: 
 			    <div th:text="${productChosen.price}"></div>
 			  </div>
@@ -23,6 +23,7 @@
 			    <div><a th:href="@{'/onemore' + '/' + ${productChosen.id}}"><button> + </button></a></div>
 			    <div><a th:href="@{'/oneless' + '/' + ${productChosen.id}}"><button> - </button></a></div>
 			  </div>
+			  <div><a th:href="@{'/todeleteproduct' + '/' + ${productChosen.id}}">REMOVE</a></div>
 			</li> 
 		 </ul>
 	    <div>Total: </div>

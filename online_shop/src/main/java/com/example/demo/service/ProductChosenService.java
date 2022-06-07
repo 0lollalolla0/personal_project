@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +24,18 @@ public class ProductChosenService {
 
 	public ProductChosen findById(Long id) {
 		return this.pcr.findById(id).get();
+	}
+
+	@Transactional
+	public void deleteById(Long id) {
+		this.pcr.deleteById(id);
+	}
+
+	public List<ProductChosen> findAll() {
+		List<ProductChosen> ps = new ArrayList<>();
+		for(ProductChosen pc : this.pcr.findAll()) {
+			ps.add(pc);
+		}
+		return ps;
 	}
 }
