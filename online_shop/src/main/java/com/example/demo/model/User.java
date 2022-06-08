@@ -3,6 +3,7 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class User {
 	@OneToOne
 	private Address address;
 
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.MERGE})
 	private Basket basket;
 	
 	@OneToMany
@@ -37,6 +38,12 @@ public class User {
 	
 	public User() {
 		this.orders = new ArrayList<>();
+	}
+	
+	public User(String firstName, String lastName) {
+		this.orders = new ArrayList<>();
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 	
 	public Long getId() {

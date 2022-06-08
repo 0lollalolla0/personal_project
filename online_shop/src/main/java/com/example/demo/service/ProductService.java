@@ -31,4 +31,8 @@ public class ProductService {
 		this.pr.save(p1);
 	}
 
+	public Product findById(Long id) {
+		return this.pr.findById(id).get();
+	}
+
 }

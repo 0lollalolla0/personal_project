@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.model.Address;
 import com.example.demo.model.Basket;
+import com.example.demo.model.Comment;
 import com.example.demo.model.Credentials;
 import com.example.demo.model.Order;
 import com.example.demo.model.Product;
@@ -17,6 +18,7 @@ import com.example.demo.model.ProductChosen;
 import com.example.demo.model.User;
 import com.example.demo.service.AddressService;
 import com.example.demo.service.BasketService;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.CredentialsService;
 import com.example.demo.service.OrderService;
 import com.example.demo.service.ProductChosenService;
@@ -47,6 +49,9 @@ public class Start implements ApplicationListener<ContextRefreshedEvent> {
 	@Autowired
 	private OrderService os;
 
+	@Autowired
+	private CommentService commentService;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
     	
@@ -59,11 +64,32 @@ public class Start implements ApplicationListener<ContextRefreshedEvent> {
     	p1.setQuantityAvailable(5);
     	p1.setDescription("Questo è il primo prodotto");
     	
+    	User u1 = new User("Gigino", "Rossi");
+    	this.us.save(u1);
+    	Comment c1 = new Comment("Questo è un commento", u1);
+    	this.commentService.save(c1);
+    	
+    	User u2 = new User("Carmelino", "Bianchi");
+    	this.us.save(u2);
+    	Comment c2 = new Comment("Questo è il secondo commento", u2);
+    	this.commentService.save(c2);
+    	
+    	p1.addComment(c1);
+    	p1.addComment(c2);
+    	//this.ps.save(p1);
+    	
     	Product p2 = new Product();
     	p2.setName("SD_KFZ_251.1 AUSF_A");
     	p2.setPrice(2F);
     	p2.setQuantityAvailable(5);
     	p2.setDescription("Questo è il secondo prodotto");
+    	
+    	User u3 = new User("Nicolino", "Verdi");
+    	this.us.save(u3);
+    	Comment c3 = new Comment("Questo è il terzo commento", u3);
+    	this.commentService.save(c3);
+    	p2.addComment(c3);
+    	//this.ps.save(p2);
     	
     	Product p3 = new Product();
     	p3.setName("SPZ_MARDER_1A3");

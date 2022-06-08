@@ -29,7 +29,7 @@
 	    <div>Total: </div>
 	<div th:text="${basket.total}">...</div>
 	<div><a th:href="@{'/tobuy' + '/' + ${basket.id}}">BUY</a></div>
-	<div><a th:href="@{'/tohome' + '/' + ${basket.id}}">HOMEPAGE</a></div>
+	<div><a th:href="@{/tohome}">HOMEPAGE</a></div>
   </div>
 </body>
 </html>

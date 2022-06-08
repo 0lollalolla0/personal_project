@@ -18,6 +18,13 @@ public class Comment {
 	
 	private String content;
 	
+	public Comment(String string, User u) {
+		this.content = string;
+		this.author = u;
+	}
+	
+	public Comment() {}
+
 	public User getAuthor() { return author;}
 	
 	public void setAuthor(User author) { this.author = author; }

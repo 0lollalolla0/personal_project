@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,6 +30,10 @@ public class Product {
 	
 	@OneToMany
 	private List<Comment> comments;
+	
+	public Product() {
+		this.comments = new ArrayList<>();
+	}
 
 	public Long getId() { return id; }
 
@@ -60,6 +65,10 @@ public class Product {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public void addComment(Comment c) {
+		this.comments.add(c);
 	}
 	
 }

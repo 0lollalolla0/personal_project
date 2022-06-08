@@ -35,10 +35,8 @@
 	<div>
 		<ul>
 		   <li th:each="product : ${products}">
-			 <div><img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}"/>
 			   <div th:text="${product.name}">...</div>
-			   <a href="product.html" th:href="@{'/openproducts' + '/' + ${product.id}}">PUT IN THE BASKET</a>
-			   <a th:href="@{'/toput' + '/' + ${product.id}}">PUT IN THE BASKET</a></div>
+			   <a href="product.html" th:href="@{'/openproduct' + '/' + ${product.id}}"><img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}" height="100" width="100"/></a>
 			</li>
 		</ul>
    </div>

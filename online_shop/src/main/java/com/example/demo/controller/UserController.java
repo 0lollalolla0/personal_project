@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,11 +21,14 @@ import com.example.demo.controller.validator.CredentialsValidator;
 import com.example.demo.controller.validator.UserValidator;
 import com.example.demo.model.Address;
 import com.example.demo.model.Basket;
+import com.example.demo.model.Comment;
 import com.example.demo.model.Credentials;
+import com.example.demo.model.Product;
 import com.example.demo.model.ProductChosen;
 import com.example.demo.model.User;
 import com.example.demo.service.AddressService;
 import com.example.demo.service.BasketService;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.CredentialsService;
 import com.example.demo.service.ProductChosenService;
 import com.example.demo.service.ProductService;
@@ -61,8 +63,13 @@ public class UserController {
 	
 	@Autowired
 	private BasketService bs;
+	
+	@Autowired
+	private CommentService commentService;
 
 	private User currentUser;
+
+	private Product currentProduct;
 	
 	@GetMapping("/login")
 	public String getLogin(Model model) {
@@ -196,6 +203,7 @@ public class UserController {
 				}
 				i++;
 			}
+			p.getProduct().setQuantityAvailable(p.getProduct().getQuantityAvailable()+1);
 			b.setProducts(products);
 			b.calculateTotal();
 			this.bs.save(b);
@@ -218,6 +226,7 @@ public class UserController {
 				it.remove();
 			}
 		}
+		p.getProduct().setQuantityAvailable(p.getProduct().getQuantityAvailable()-1);
 		b.setProducts(products);
 	    this.bs.save(b);
 	    b.calculateTotal();
@@ -227,5 +236,45 @@ public class UserController {
 		model.addAttribute("basket", b);
 		return "basket.html";
 	}
+	
+	@GetMapping("/tohome")
+	public String getHomePage(Model model) {
+		model.addAttribute("user", this.currentUser);
+		model.addAttribute("products", this.ps.findAll());
+		return "home.html";
+	}
+	
+	@GetMapping("/openproduct/{id}")
+	public String getProduct(@PathVariable("id") Long id, Model model) {
+	    Product p = this.ps.findById(id);
+	    this.currentProduct = p;
+		model.addAttribute("product", p);
+		model.addAttribute("comment", new Comment(new String(), this.currentUser));
+		return "product.html";
+	}
+	
+	@GetMapping("/toput/{id}")
+	public String putProductOnTheBasket(@PathVariable("id") Long id, Model model) {
+		Product p = this.ps.findById(id);
+		ProductChosen pc = new ProductChosen(p, 1);
+		this.pcs.save(pc);
+		this.currentUser.getBasket().getProducts().add(pc); //O senno separo il basket
+		model.addAttribute("user", this.currentUser);
+		model.addAttribute("products", this.ps.findAll()); //GESTIRE DUPLICATI
+		return "home.html";
+	}
+	
+	@PostMapping("/comment")
+	public String comment (@ModelAttribute("comment") Comment comment, BindingResult br, Model model) {
+		comment.setAuthor(this.currentUser);
+		this.commentService.save(comment);
+		this.currentProduct.addComment(comment);
+		this.ps.save(this.currentProduct);
+		model.addAttribute("product", this.currentProduct);
+		model.addAttribute("comment", new Comment(new String(), this.currentUser));
+		return "product.html";
+	}
+	
+	
 	
 }
