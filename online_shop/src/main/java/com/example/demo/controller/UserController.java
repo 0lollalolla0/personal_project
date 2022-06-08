@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import com.example.demo.model.Address;
 import com.example.demo.model.Basket;
 import com.example.demo.model.Comment;
 import com.example.demo.model.Credentials;
+import com.example.demo.model.Order;
 import com.example.demo.model.Product;
 import com.example.demo.model.ProductChosen;
 import com.example.demo.model.User;
@@ -30,6 +32,7 @@ import com.example.demo.service.AddressService;
 import com.example.demo.service.BasketService;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.CredentialsService;
+import com.example.demo.service.OrderService;
 import com.example.demo.service.ProductChosenService;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.UserService;
@@ -66,6 +69,9 @@ public class UserController {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private OrderService orderService;
 
 	private User currentUser;
 
@@ -142,7 +148,9 @@ public class UserController {
 			this.currentUser.setAddress(address);
 			this.us.save(this.currentUser);
 			model.addAttribute("user", this.currentUser);
-			return "home.html";
+			model.addAttribute("address", this.currentUser.getAddress());
+			model.addAttribute("orders", this.currentUser.getOrders());
+			return "useraccount.html";
 		}
 		return "changeaddress.html";
 	}
@@ -256,11 +264,23 @@ public class UserController {
 	@GetMapping("/toput/{id}")
 	public String putProductOnTheBasket(@PathVariable("id") Long id, Model model) {
 		Product p = this.ps.findById(id);
-		ProductChosen pc = new ProductChosen(p, 1);
-		this.pcs.save(pc);
-		this.currentUser.getBasket().getProducts().add(pc); //O senno separo il basket
+		ProductChosen newPc = new ProductChosen(p, 1);
+		this.pcs.save(newPc);
+		Basket b = this.currentUser.getBasket();
+		boolean esistegia = false;
+		for(ProductChosen pc : b.getProducts()) {
+			if(newPc.getName().equals(pc.getName())) esistegia=true;
+		}
+	    if(!esistegia) {
+	    	b = this.currentUser.getBasket();
+	    	b.addProduct(newPc);
+	    	b.calculateTotal();
+	    	this.bs.save(b);
+	    	this.currentUser.setBasket(b);
+	    	this.us.save(this.currentUser);
+	    }
 		model.addAttribute("user", this.currentUser);
-		model.addAttribute("products", this.ps.findAll()); //GESTIRE DUPLICATI
+		model.addAttribute("products", this.ps.findAll());
 		return "home.html";
 	}
 	
@@ -275,6 +295,15 @@ public class UserController {
 		return "product.html";
 	}
 	
-	
+	@GetMapping("/tobuy/{id}")
+	public String buyBasket(@PathVariable("id") Long id, Model model) {
+		Order o = new Order(this.currentUser.getBasket().getProducts(), this.currentUser.getBasket().getTotal());
+		o.setDateTime(LocalDateTime.now());
+		this.orderService.save(o);
+		this.currentUser.addOrder(o);
+		this.us.save(this.currentUser);
+		model.addAttribute("order", o);
+		return "successfulpurchase.html";
+	}
 	
 }

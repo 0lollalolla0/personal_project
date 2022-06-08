@@ -12,7 +12,7 @@ import com.example.demo.repository.OrderRepository;
 public class OrderService {
 	
 	@Autowired
-	public OrderRepository or;
+	private OrderRepository or;
 	
 	@Transactional
 	public void save(Order o) {

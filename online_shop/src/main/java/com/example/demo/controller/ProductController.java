@@ -9,9 +9,4 @@ import com.example.demo.service.ProductService;
 @Controller
 public class ProductController {
 	
-	@Autowired
-	private ProductService prodottoService;
-	
-    @Autowired
-    private ProductValidator prodottoValidator;
 }

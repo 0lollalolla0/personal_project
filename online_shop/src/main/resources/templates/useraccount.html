@@ -21,9 +21,15 @@
 	    <div><div>Your past orders:</div>
 	      <ul>
 		   <li th:each="order : ${orders}">
-			 <div><div>Order products:</div>
+		     <div th:text="${order.dateTime}"></div>
+			 <div><div>Products:</div>
 			   <ul>
 			     <li th:each="productChosen : ${order.products}">
+			     <ul>
+			       <li th:each="product : ${productChosen.product}">
+			         <div th:text="${product.name}"></div>
+			       </li>
+			     </ul>
 			       <div>Unit price: 
 			         <div th:text="${productChosen.price}"></div>
 			       </div>
@@ -38,6 +44,7 @@
 			</li>
 		  </ul>
 	    </div>
+	    <div><a th:href="@{/tohome}">HOMEPAGE</a></div>
 	  </div>
 </body>
 </html>

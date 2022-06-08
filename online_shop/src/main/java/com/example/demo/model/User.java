@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "users") // cambiamo nome perchè in postgres user e' una parola riservata
@@ -33,7 +37,8 @@ public class User {
 	@OneToOne(cascade = {CascadeType.MERGE})
 	private Basket basket;
 	
-	@OneToMany
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Order> orders;
 	
 	public User() {
