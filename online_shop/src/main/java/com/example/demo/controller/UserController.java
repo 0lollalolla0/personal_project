@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.controller.validator.AddressValidator;
+import com.example.demo.controller.validator.CommentValidator;
 import com.example.demo.controller.validator.CredentialsValidator;
 import com.example.demo.controller.validator.UserValidator;
 import com.example.demo.model.Address;
@@ -68,14 +69,17 @@ public class UserController {
 	private BasketService bs;
 	
 	@Autowired
+	private OrderService orderService;
+	
+	@Autowired
 	private CommentService commentService;
 	
 	@Autowired
-	private OrderService orderService;
-
-	private User currentUser;
+	private CommentValidator commentValidator;
 
 	private Product currentProduct;
+
+	private User currentUser;
 	
 	@GetMapping("/login")
 	public String getLogin(Model model) {
@@ -105,6 +109,7 @@ public class UserController {
 			us.save(user);
 			credentials.setUser(user);
 			cs.save(credentials);
+			this.currentUser = user;
 			return "successfulregistration.html";
 		}
 		return "signin.html";
@@ -252,6 +257,17 @@ public class UserController {
 		return "home.html";
 	}
 	
+	@GetMapping("/tobuy/{id}")
+	public String buyBasket(@PathVariable("id") Long id, Model model) {
+		Order o = new Order(this.currentUser.getBasket().getProducts(), this.currentUser.getBasket().getTotal());
+		o.setDateTime(LocalDateTime.now());
+		this.orderService.save(o);
+		this.currentUser.addOrder(o);
+		this.us.save(this.currentUser);
+		model.addAttribute("order", o);
+		return "successfulpurchase.html";
+	}
+	
 	@GetMapping("/openproduct/{id}")
 	public String getProduct(@PathVariable("id") Long id, Model model) {
 	    Product p = this.ps.findById(id);
@@ -286,24 +302,16 @@ public class UserController {
 	
 	@PostMapping("/comment")
 	public String comment (@ModelAttribute("comment") Comment comment, BindingResult br, Model model) {
-		comment.setAuthor(this.currentUser);
-		this.commentService.save(comment);
-		this.currentProduct.addComment(comment);
-		this.ps.save(this.currentProduct);
+		this.commentValidator.validate(comment, br);
+		if(!br.hasErrors()) {
+			comment.setAuthor(this.currentUser);
+			this.commentService.save(comment);
+			this.currentProduct.addComment(comment);
+			this.ps.save(this.currentProduct);
+		}
 		model.addAttribute("product", this.currentProduct);
 		model.addAttribute("comment", new Comment(new String(), this.currentUser));
 		return "product.html";
-	}
-	
-	@GetMapping("/tobuy/{id}")
-	public String buyBasket(@PathVariable("id") Long id, Model model) {
-		Order o = new Order(this.currentUser.getBasket().getProducts(), this.currentUser.getBasket().getTotal());
-		o.setDateTime(LocalDateTime.now());
-		this.orderService.save(o);
-		this.currentUser.addOrder(o);
-		this.us.save(this.currentUser);
-		model.addAttribute("order", o);
-		return "successfulpurchase.html";
 	}
 	
 }

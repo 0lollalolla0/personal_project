@@ -22,21 +22,11 @@
 	<!-- <div class="text"><h3>This amazing store has everything you would want in your model collection. We have the most complete and detailed kits, both for beginners and for the most advanced in this hobby.
 	Let yourself be guided by our experts. You can add items to your cart and view comments from other users. To do this you must register on our website and be connected.</h3> </div> 
 	 -->
-	<nav class="navbar">
-		<div class="nav"> 
-		    <div class="nav-items">
-		        <div class="search">
-		            <input type="text" class="search-box" placeholder="search product">
-		            <button class="search-btn">search</button>
-		        </div>
-		    </div>
-		</div>
-	</nav>
 	<div>
 		<ul>
 		   <li th:each="product : ${products}">
 			   <div th:text="${product.name}">...</div>
-			   <a href="product.html" th:href="@{'/openproduct' + '/' + ${product.id}}"><img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}" height="100" width="100"/></a>
+			   <a href="product.html" th:href="@{'/openproduct' + '/' + ${product.id}}"><img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}" height="150" width="150"/></a>
 			</li>
 		</ul>
    </div>

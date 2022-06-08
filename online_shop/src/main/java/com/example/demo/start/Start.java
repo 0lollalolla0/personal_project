@@ -76,7 +76,6 @@ public class Start implements ApplicationListener<ContextRefreshedEvent> {
     	
     	p1.addComment(c1);
     	p1.addComment(c2);
-    	//this.ps.save(p1);
     	
     	Product p2 = new Product();
     	p2.setName("SD_KFZ_251.1 AUSF_A");
@@ -89,7 +88,6 @@ public class Start implements ApplicationListener<ContextRefreshedEvent> {
     	Comment c3 = new Comment("Questo è il terzo commento", u3);
     	this.commentService.save(c3);
     	p2.addComment(c3);
-    	//this.ps.save(p2);
     	
     	Product p3 = new Product();
     	p3.setName("SPZ_MARDER_1A3");
@@ -97,9 +95,23 @@ public class Start implements ApplicationListener<ContextRefreshedEvent> {
     	p3.setQuantityAvailable(5);
     	p3.setDescription("Questo è il terzo prodotto");
     	
+    	Product p4 = new Product();
+    	p4.setName("M40 G_M_C_");
+    	p4.setPrice(20F);
+    	p4.setQuantityAvailable(10);
+    	p4.setDescription("Modellino in plastica con scatola");
+    	
+    	Product p5 = new Product();
+    	p5.setName("GRILLE AUSF_M");
+    	p5.setPrice(13.70F);
+    	p5.setQuantityAvailable(17);
+    	p5.setDescription("Non può mancare nella vostra collezione");
+    	
     	this.ps.save(p1);
     	this.ps.save(p2);
     	this.ps.save(p3);
+    	this.ps.save(p4);
+    	this.ps.save(p5);
     	
     	ProductChosen pc1 = new ProductChosen(p1, 1);
     	ProductChosen pc2 = new ProductChosen(p2, 2);
