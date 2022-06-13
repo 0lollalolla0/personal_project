@@ -7,10 +7,10 @@
     <link rel="stylesheet" th:href="@{/css/default.css}" />
 </head>
 <body>
-	<div>
-	  <h3> Order sent successfully! </h3>
-	  <div> You will pay <div th:text="${order.total}"></div> $ for it once delivered, thank you! </div>
-	  <div><a th:href="@{/tohome}">HOMEPAGE</a></div>
+	<div class="container">
+	  <h1> Order sent successfully! </h1>
+	  <div class="space"> You will pay <a th:text="${order.total + '€'}"></a> for it once delivered, thank you! </div>
+	  <div class="space"><a th:href="@{/tohome}">HOMEPAGE</a></div>
 	</div>
 </body>
 </html>

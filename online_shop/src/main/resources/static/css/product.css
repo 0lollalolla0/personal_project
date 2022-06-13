@@ -17,44 +17,61 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   background: transparent;
 }
 
-html{
-
-    height: 100%;
-     width: 100%;
- 
- }
-
-
 body{
 	background: linear-gradient(to bottom right, rgb(113, 113, 142), #FAFCFF);
 	font-family: helvetica, arial, geneva, sans-serif; 
-	font-size: 1.0em;   /*Tamaño fuente*/
-	margin-left: 3em;   /*Tamaño margen izquierdo*/
-	margin-right: 3em;  /*Tamaño margen derecho*/
+	font-size: 1.0em;   /*Tama�o fuente*/
+	margin-left: 3em;   /*Tama�o margen izquierdo*/
+	margin-right: 3em;  /*Tama�o margen derecho*/
 	color: black;/* Color letra */
-	height: 100%;
-     width: 100%;
+	
 }
+
+
+.comments{
+	background-color: rgb(78, 116, 109);
+	border: 2px solid black;
+	font-size: 1em; /*Tama�o fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: left;
+    border-color: black; 
+	
+	
+}
+
+.specy{
+	
+	background-color: rgb(78, 116, 109);
+	border: 2px solid black;
+	font-size: 1em; /*Tama�o fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: left;
+   
+	
+}
+
 h1{
 	
 	text-align: center;
-	font-size: 2.5em; /*Tamaño fuente*/
+	font-size: 2.5em; /*Tama�o fuente*/
     font-weight: bold; /*Tipo de negrita*/
     color:navy; /* Color de letra */
     margin:0;
 	
 }
 h2  {	/* Esto afecta a todo h2 */
-    font-size: 1.1em; /*Tamaño fuente*/
+    font-size: 1.1em; /*Tama�o fuente*/
     color:navy; /* Color de letra */
-    border:1em;   /*Tamaño borde*/
-    padding:2em;  /*Tamaño padding*/
+    border:1em;   /*Tama�o borde*/
+    padding:2em;  /*Tama�o padding*/
     margin:2em;    
     text-align: center;
     }
         
 h3 {/* Esto afecta a todo h3 */
-    font-size: 1em; /*Tamaño fuente*/
+    font-size: 1em; /*Tama�o fuente*/
     padding:2em;
     margin:2em;
     text-align: center;
@@ -62,103 +79,22 @@ h3 {/* Esto afecta a todo h3 */
     }
     
 h4 {/* Esto afecta a todo h4 */
-    font-size: 0.9em; /*Tamaño fuente*/
+    font-size: 0.9em; /*Tama�o fuente*/
     padding:0;
     margin:0;
     }
     
-.text {
-	margin-top:0.5em;    /* Pone una linea rechulona */
-    margin-left:0.5em;
-    margin-right:0.5em;
-    margin-bottom: 0.5em;
-	border-style:solid;
-    border-width:2px;
-    border-color: rgb(0, 0, 0);
+.description {
+	
+	background-color: rgb(78, 116, 109);
+	border: 2px solid black;
+    font-size: 1em; /*Tama�o fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: left;
     clear:both;
+    
 	
-}
-
-.products{
-	
-	padding: 0 10vw;
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-	
-}
-
-.products::-webkit-scrollbar{
-    display:contents;
-}
-
-.product-card{
-    flex: 0 0 auto;
-    width: 250px;
-    height: 450px;
-    margin-right: 40px;
-}
-.product-image{
-    position: relative;
-    width: 100%;
-    height: 350px;
-    overflow: hidden;
-}
-
-.product-thumb{
-    width: 100%;
-    height: 350px;
-    object-fit:contain;
-}
-
-.card-btn{
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px;
-    width: 90%;
-    text-transform: capitalize;
-    border: none;
-    outline: none;
-    background: #fff;
-    border-radius: 5px;
-    transition: 0.5s;
-    cursor: pointer;
-    opacity: 0;
-}
-
-.product-card:hover .card-btn{
-    opacity: 1;
-}
-
-.card-btn:hover{
-    background: #efefef;
-}
-
-.product-info{
-    width: 100%;
-    height: 100px;
-    padding-top: 10px;
-}
-
-.product-brand{
-    text-transform: uppercase;
-}
-
-.product-short-des{
-    width: 100%;
-    height: 20px;
-    line-height: 20px;
-    overflow: hidden;
-    opacity: 0.5;
-    text-transform: capitalize;
-    margin: 5px 0;
-}
-
-.price{
-    font-weight: 900;
-    font-size: 20px;
 }
 
 a:link { /* Pseudoclase a para links */
@@ -167,6 +103,7 @@ a:link { /* Pseudoclase a para links */
     font-weight: bold;
     display:block;
 	width:120px;
+	background-color:red;
 	text-align:center;
 	padding:4px;
 	text-decoration:none;
@@ -199,27 +136,13 @@ li{
 float:left;
 }
 
-
-.generic{
-	
-	margin:2em;
-	
-}
-
-.fa {
-  padding: 10px;
-  font-size: 20px;
-  width: 30px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-}
-
 .container{
 
     margin: 20px;
     margin-top: 1cm;
     text-align: center;
+    border:1cm;
+    border-color: black;
 	
 }
 
@@ -227,10 +150,26 @@ float:left;
 
     margin:2em;
     text-align: center;
-
+    
 }
 
+html{
 
+    height: 100%;
+     width: 100%;
+ 
+ }
+ body{
+	
+	height: 100%;
+     width: 100%;
+}
 
-
+.border{
+	margin:0.5cm;
+	border-width: 0.15cm;
+	border-color: black;
+	border-style:solid;
+	
+}
 
