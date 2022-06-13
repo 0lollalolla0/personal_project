@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Profile - Amazing Model Store</title>
+</head>
+<body>
+	<div>
+	  <h1>YOUR PROFILE</h1>
+	</div>
+	  <div th:text="${user.firstName}"></div>
+	  <div th:text="${user.lastName}"></div>
+	  <div><div>Your address:</div>
+	    <div th:text="${address.street}"></div>
+	    <div th:text="${address.number}"></div>
+	    <div th:text="${address.city}"></div>
+	    <div th:text="${address.state}"></div>
+	    <div><a th:href="@{'/addressof' + '/' + ${user.id}}"><button type="submit">Change address</button></a></div>
+	  </div>
+	  <div>
+	    <div><div>Your past orders:</div>
+	      <ul>
+		   <li th:each="order : ${orders}">
+		     <div th:text="${order.dateTime}"></div>
+			 <div><div>Products:</div>
+			   <ul>
+			     <li th:each="productChosen : ${order.products}">
+			     <ul>
+			       <li th:each="product : ${productChosen.product}">
+			         <div th:text="${product.name}"></div>
+			       </li>
+			     </ul>
+			       <div>Unit price: 
+			         <div th:text="${productChosen.price}"></div>
+			       </div>
+			        <div>Quantity chosen: 
+			       <div th:text="${productChosen.quantityChosen}"></div>
+			        </div>
+			     </li> 
+			   </ul>
+			 </div>
+			 <div>Total: </div>
+			 <div th:text="${order.total}">...</div>
+			</li>
+		  </ul>
+	    </div>
+	    <div><a th:href="@{/tohome}">HOMEPAGE</a></div>
+	  </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Main Page - Amazing Model Store</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+</head>
+<body>
+
+	<div class="block1.1">
+	  <h1>AMAZING MODEL STORE</h1>
+	  <img th:src="@{/images/init.jpg}" width="1500" height="500"/>
+	</div>
+
+	<div class="block1.1">
+	    <div><a th:href="@{'/toyouraccount' + '/' + ${user.id}}"><button type="submit">Account</button></a></div>
+	    <div><a th:href="@{/logout}"><button type="submit">Log Out</button></a></div>
+	    <div><a th:href="@{'/basketof' + '/' + ${user.id}}"><button type="submit">Your basket</button></a></div>	   
+	</div>
+	
+	<!-- <div class="text"><h3>This amazing store has everything you would want in your model collection. We have the most complete and detailed kits, both for beginners and for the most advanced in this hobby.
+	Let yourself be guided by our experts. You can add items to your cart and view comments from other users. To do this you must register on our website and be connected.</h3> </div> 
+	 -->
+	<div>
+		<ul>
+		   <li th:each="product : ${products}">
+			   <div th:text="${product.name}">...</div>
+			   <a href="product.html" th:href="@{'/openproduct' + '/' + ${product.id}}"><img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}" height="150" width="150"/></a>
+			</li>
+		</ul>
+   </div>
+	
+	<!-- <div class="products">
+    <div class="product-card">
+        <div class="product-image">
+            <img th:src="@{/images/139958288_max.jpg}" class="product-thumb" alt="">
+            <button class="card-btn">BUY</button>
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">LEOPARD_2A6/A6M</h2>
+            <p class="product-short-des">Enjoy the last model of the Heer's pride'</p>
+            <span class="price">$20</span>
+        </div>
+    </div>
+	
+    <div class="product-card">
+        <div class="product-image">
+            <img th:src="@{/images/71N1pN0IfrL._AC_SX679_.jpg}" class="product-thumb" alt="">
+            <button class="card-btn">BUY</button>
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">SPZ MARDER 1A3 </h2>
+            <p class="product-short-des">Enjoy the last model of the Heer's pride'</p>
+            <span class="price">$20</span>
+        </div>
+    </div>
+    
+    
+    
+    <div class="product-card">
+        <div class="product-image">
+            <img th:src="@{/images/81cmdiV2zAL._AC_SL1500_.jpg}" class="product-thumb" alt="">
+            <button class="card-btn">BUY</button>
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">SD.KFZ.251/1 AUSF.A</h2>
+            <p class="product-short-des">Enjoy the last model of the Heer's pride'</p>
+            <span class="price">$20</span>
+        </div>
+    </div>
+    
+    
+   
+    <div class="product-card">
+        <div class="product-image">
+            <img th:src="@{/images/81gG3kPMKBL._AC_SL1500_.jpg}" class="product-thumb" alt="">
+            <button class="card-btn">BUY</button>
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">SD.KFZ.251/1 AUSF.A</h2>
+            <p class="product-short-des">Enjoy the last model of the Heer's pride'</p>
+            <span class="price">$20</span>
+        </div>
+    </div>
+    
+    
+   
+    <div class="product-card">
+        <div class="product-image">
+            <img th:src="@{/images/81KGuelfCzL._AC_SX425_.jpg}" class="product-thumb" alt="">
+            <button class="card-btn">BUY</button>
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">SD.KFZ.251/1 AUSF.A</h2>
+            <p class="product-short-des">Enjoy the last model of the Heer's pride'</p>
+            <span class="price">$20</span>
+        </div>
+    </div>
+	</div> -->
+	
+	<div class="socialMedia">
+		<ul>
+			<li><a th:href="@{mailto:angelote678@gmail.com}" class="fa fa-google"> E-MAIL</a></li>
+			<li><a th:href="@{https://twitter.com/Angelote678}" class="fa fa-twitter"> TWITTER</a></li>
+			<li><a th:href="@{https://www.instagram.com/angel_alm__/}" class="fa fa-instagram"> INSTAGRAM</a></li>
+			
+		</ul>
+		<div class="generic"> TLF: +34 651671557</div>
+	</div>
+</body>
+</html>
