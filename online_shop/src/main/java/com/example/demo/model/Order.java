@@ -37,7 +37,8 @@ public class Order {
 	}
 	
 	public Order(List<ProductChosen> products, Float total) {
-		this.products = products;
+		this.products = new ArrayList<>();
+		this.products.addAll(products);
 		this.total = total;
 	}
 	

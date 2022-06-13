@@ -11,7 +11,7 @@
 	  <h1 class="container" th:text="${product.name}"></h1>
 	  <img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}" height="250" width="250"/>
 	  <div th:text="${product.description}"></div>
-	  <div th:text="${product.price}"></div><div></div>
+	  <div th:text="${product.price + ' €'}"></div><div></div>
 	  <div><a th:href="@{'/toput' + '/' + ${product.id}}">PUT IN THE BASKET</a></div>
 	</div>
 	<div class="container">

@@ -17,9 +17,9 @@
         <div>City: <input type="text" th:field=*{address.city}/><span th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}"></span></div>
         <div>State: <input type="text" th:field=*{address.state}/><span th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}"></span></div>
         <div>Username: <input type="text" th:field=*{credentials.username}/><span th:if="${#fields.hasErrors('credentials.username')}" th:errors="*{credentials.username}"></span></div>
-        <div>E-mail: <input type="email" th:field=*{credentials.email}/><span th:if="${#fields.hasErrors('credentials.email')}" th:errors="*{credentials.email}"></span></div>
+        <div>E-mail: <input type="text" th:field=*{credentials.email}/><span th:if="${#fields.hasErrors('credentials.email')}" th:errors="*{credentials.email}"></span></div>
         <div>Password: <input type="password" th:field=*{credentials.password}/><span th:if="${#fields.hasErrors('credentials.password')}" th:errors="*{credentials.password}"></span></div>
-        <div><button type="submit">avanti</button></div>
+        <div><button class="btn" type="submit">avanti</button></div>
         </form>
     </section>
   </div>

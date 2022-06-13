@@ -4,25 +4,27 @@
     <meta charset="UTF-8" />
     <title>Product - Amazing Model Store</title>
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
-    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="stylesheet" th:href="@{/css/product.css}" />
 </head>
 <body>
-	<div>
-	  <h1 th:text="${product.name}"></h1>
-	  <img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}" height="100" width="100"/>
+	<div class="container">
+	  <h1 class="container" th:text="${product.name}"></h1>
+	  <img th:src="@{'/images' + '/' + ${product.name} + '.jpg'}" height="250" width="250"/>
 	  <div th:text="${product.description}"></div>
-	  <div th:text="${product.price}"></div><div></div>
+	  <div th:text="${product.price + ' €'}"></div><div></div>
 	  <div><a th:href="@{'/toput' + '/' + ${product.id}}">PUT IN THE BASKET</a></div>
+	</div>
+	<div class="container">
 	  <ul>
 		<li th:each="comment : ${product.comments}">
-		  <div>
+		  <div class="border">
 		    <ul>
 		      <li th:each="author : ${comment.author}">
 		        <div th:text="${author.firstName}"></div>
 		        <div th:text="${author.lastName}"></div>
 		      </li>
 		     </ul>
-		    <div th:text="${comment.content}"></div>
+		    <div class="space" th:text="${comment.content}"></div>
 		  </div>
 		 </li> 
 	  </ul>
@@ -35,5 +37,6 @@
         </form>
       </div>
 	</div>
+	
 </body>
 </html>

@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <title>Profile - Amazing Model Store</title>
+    <link rel="stylesheet" th:href="@{/css/useraccount.css}" />
 </head>
 <body>
 	<div>
 	  <h1>YOUR PROFILE</h1>
 	</div>
-	  <div th:text="${user.firstName}"></div>
-	  <div th:text="${user.lastName}"></div>
-	  <div><div>Your address:</div>
-	    <div th:text="${address.street}"></div>
-	    <div th:text="${address.number}"></div>
-	    <div th:text="${address.city}"></div>
-	    <div th:text="${address.state}"></div>
-	    <div><a th:href="@{'/addressof' + '/' + ${user.id}}"><button type="submit">Change address</button></a></div>
+	
+		<div class="border">
+			<div class="container"><h4>Name</h4></div>
+			  <div class="space" th:text="${user.firstName + ' ' + user.lastName}"></div>
+		</div>
+		
+	  <div class="border">
+		  <div class="container"><h4>Your address:</h4></div>
+		    <div class="space" th:text="${address.street + ' ' + address.number + ' ' + address.city + ' ' + address.state}"></div>
+		    <div class="space"><a class="btn" th:href="@{'/addressof' + '/' + ${user.id}}">Change address</a></div>
 	  </div>
-	  <div>
-	    <div><div>Your past orders:</div>
+	  
+	   <div><div>Your past orders:</div>
 	      <ul>
 		   <li th:each="order : ${orders}">
 		     <div th:text="${order.dateTime}"></div>

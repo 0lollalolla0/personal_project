@@ -23,4 +23,8 @@ public class BasketService {
 	public void deleteById(Basket b) {
 		this.br.deleteById(b.getId());
 	}
+
+	public Basket findById(Long id) {
+		return this.findById(id);
+	}
 }

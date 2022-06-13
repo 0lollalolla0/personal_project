@@ -259,13 +259,19 @@ public class UserController {
 	
 	@GetMapping("/tobuy/{id}")
 	public String buyBasket(@PathVariable("id") Long id, Model model) {
-		Order o = new Order(this.currentUser.getBasket().getProducts(), this.currentUser.getBasket().getTotal());
-		o.setDateTime(LocalDateTime.now());
-		this.orderService.save(o);
-		this.currentUser.addOrder(o);
-		this.us.save(this.currentUser);
-		model.addAttribute("order", o);
-		return "successfulpurchase.html";
+		if(this.currentUser.getBasket().getTotal()!= 0F) {
+			Order o = new Order(this.currentUser.getBasket().getProducts(), this.currentUser.getBasket().getTotal());
+			o.setDateTime(LocalDateTime.now());
+			this.orderService.save(o);
+			this.currentUser.addOrder(o);
+			this.currentUser.getBasket().clear();
+			this.bs.save(this.currentUser.getBasket());
+			this.us.save(this.currentUser);
+			model.addAttribute("order", o);
+			return "successfulpurchase.html";
+		}
+		model.addAttribute("basket", this.currentUser.getBasket());
+		return "basket.html";
 	}
 	
 	@GetMapping("/openproduct/{id}")

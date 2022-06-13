@@ -66,5 +66,10 @@ public class Basket {
 	public void setProducts(List<ProductChosen> products) {
 		this.products = products;
 	}
+
+	public void clear() {
+		this.products.clear();
+		this.total = 0F;
+	}
 	
 }
