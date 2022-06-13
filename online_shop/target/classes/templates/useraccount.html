@@ -11,7 +11,7 @@
 	</div>
 	
 		<div class="border">
-			<div class="container"><h4>Username</h4></div>
+			<div class="container"><h4>Name</h4></div>
 			  <div class="space" th:text="${user.firstName + ' ' + user.lastName}"></div>
 		</div>
 		
@@ -21,35 +21,33 @@
 		    <div class="space"><a class="btn" th:href="@{'/addressof' + '/' + ${user.id}}">Change address</a></div>
 	  </div>
 	  
-	  <div>
-	    <div class="border">
-	    	<div class="space"> <h4>Your past orders:</h4></div>
+	   <div><div>Your past orders:</div>
 	      <ul>
 		   <li th:each="order : ${orders}">
-		     <div class="space" th:text="${order.dateTime}"></div>
-			 <div class="space"><div class="space"><h4>Products:</h4></div>
+		     <div th:text="${order.dateTime}"></div>
+			 <div><div>Products:</div>
 			   <ul>
 			     <li th:each="productChosen : ${order.products}">
 			     <ul>
 			       <li th:each="product : ${productChosen.product}">
-			         <div class="space" th:text="${product.name}"></div>
+			         <div th:text="${product.name}"></div>
 			       </li>
 			     </ul>
-			       <div class="space"><h4>Unit price: </h4>
-			         <div class="space" th:text="${productChosen.price + '€'}"></div>
+			       <div>Unit price: 
+			         <div th:text="${productChosen.price}"></div>
 			       </div>
-			        <div class="space"><h4>Quantity chosen:</h4> 
-			       <div class="space" th:text="${productChosen.quantityChosen}"></div>
+			        <div>Quantity chosen: 
+			       <div th:text="${productChosen.quantityChosen}"></div>
 			        </div>
 			     </li> 
 			   </ul>
 			 </div>
-			 <div class="space"><h4>Total: </h4></div>
-			 <div class="space" th:text="${order.total + '€'}">...</div>
+			 <div>Total: </div>
+			 <div th:text="${order.total}">...</div>
 			</li>
 		  </ul>
 	    </div>
-	    <div class="container"><a class="btn" th:href="@{/tohome}">HOMEPAGE</a></div>
+	    <div><a th:href="@{/tohome}">HOMEPAGE</a></div>
 	  </div>
 </body>
 </html>
