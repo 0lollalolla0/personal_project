@@ -17,21 +17,19 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   background: transparent;
 }
 
-html{
-
+html {
+	
     height: 100%;
-     width: 100%;
- 
- }
+}
 
 body {
-	height: 100%;
   background: linear-gradient(to bottom right, rgb(113, 113, 142), #FAFCFF);
   color: #000;
   font: 14px Arial;
   margin: 0 auto;
   padding: 0;
   position: relative;
+  height: 100%;
 }
 h1{ font-size:28px;}
 h2{ font-size:26px;}
@@ -284,19 +282,4 @@ form:after {
     text-transform: uppercase; /*capitalización texto*/
     font-family: 'Helvetica', sans-serif; /*tipografía texto*/
     border-radius: 50px; /*bordes redondos*/
-}
-
-
-html{
-
-    height: auto;
-     width: auto;
- 
- }
- 
- body{
-	
-	height: auto;
-     width: auto;
-	
 }
