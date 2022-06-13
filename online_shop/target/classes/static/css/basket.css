@@ -1,0 +1,294 @@
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+html{
+
+    height: 100%;
+     width: 100%;
+ 
+ }
+
+
+body{
+	background: linear-gradient(to bottom right, rgb(113, 113, 142), #FAFCFF);
+	font-family: helvetica, arial, geneva, sans-serif; 
+	font-size: 1.0em;   /*Tamaño fuente*/
+	margin-left: 3em;   /*Tamaño margen izquierdo*/
+	margin-right: 3em;  /*Tamaño margen derecho*/
+	color: black;/* Color letra */
+	height: 100%;
+     width: 100%;
+}
+h1{
+	
+	text-align: center;
+	font-size: 2.5em; /*Tamaño fuente*/
+    font-weight: bold; /*Tipo de negrita*/
+    color:navy; /* Color de letra */
+    margin:0;
+	
+}
+h2  {	/* Esto afecta a todo h2 */
+    font-size: 1.1em; /*Tamaño fuente*/
+    color:navy; /* Color de letra */
+    border:1em;   /*Tamaño borde*/
+    padding:2em;  /*Tamaño padding*/
+    margin:2em;    
+    text-align: center;
+    }
+        
+h3 {/* Esto afecta a todo h3 */
+    font-size: 1em; /*Tamaño fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: center;
+    border-color: black; 
+    }
+    
+h4 {/* Esto afecta a todo h4 */
+    font-size: 0.9em; /*Tamaño fuente*/
+    padding:0;
+    margin:0;
+    }
+    
+.text {
+	margin-top:0.5em;    /* Pone una linea rechulona */
+    margin-left:0.5em;
+    margin-right:0.5em;
+    margin-bottom: 0.5em;
+	border-style:solid;
+    border-width:2px;
+    border-color: rgb(0, 0, 0);
+    clear:both;
+	
+}
+
+.products{
+	
+	padding: 0 10vw;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+	
+}
+
+.products::-webkit-scrollbar{
+    display:contents;
+}
+
+.product-card{
+    flex: 0 0 auto;
+    width: 250px;
+    height: 450px;
+    margin-right: 40px;
+}
+.product-image{
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.product-thumb{
+    width: 100%;
+    height: 350px;
+    object-fit:contain;
+}
+
+.card-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 90%;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    background: #fff;
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.product-card:hover .card-btn{
+    opacity: 1;
+}
+
+.card-btn:hover{
+    background: #efefef;
+}
+
+.product-info{
+    width: 100%;
+    height: 100px;
+    padding-top: 10px;
+}
+
+.product-brand{
+    text-transform: uppercase;
+}
+
+.product-short-des{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    opacity: 0.5;
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+
+.price{
+    font-weight: 900;
+    font-size: 20px;
+}
+
+a:link { /* Pseudoclase a para links */
+    text-decoration: none;  /*links no visitado */
+    color: #000066;
+    font-weight: bold;
+    display:block;
+	width:120px;
+	text-align:center;
+	padding:4px;
+	text-decoration:none;
+	text-transform:uppercase;
+    }
+span.linkheader a:link {  /* Pseudoclase compuesta a para links */
+    color: white;   /* Afecta a links no visitados descendientes de un span con clase linkheader*/
+    }
+
+span.linkheader a:visited {  /* Pseudoclase compuesta a para links */
+    color: white;  /* Afecta a links visitados descendientes de un span con clase linkheader*/
+    }
+
+span.linkheader a:hover {  /* Pseudoclase compuesta a para links */
+    color: red;  /* Afecta a links cuando pones el raton encima descendientes de un span con clase linkheader*/
+    }
+a:hover,a:active
+{
+background-color:pink;
+}
+ul{
+	
+list-style-type:none;
+margin:0;
+padding:0;
+overflow:hidden;
+
+}
+li{
+float:left;
+}
+
+
+.generic{
+	
+	margin:2em;
+	
+}
+
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+
+.container{
+
+    margin: 20px;
+    margin-top: 1cm;
+    text-align: center;
+	
+}
+
+.space{
+
+    margin:2em;
+    text-align: center;
+
+}
+
+.search{
+	text-align: center;
+    width: 500px;
+    display: flex;
+}
+
+.search-box{
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d1d1d1;
+    text-transform: capitalize;
+    background: none;
+    color: #a9a9a9;
+    outline: none;
+}
+
+.search-btn{
+    width: 20%;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #383838;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search-box::placeholder{
+    color: #a9a9a9;
+}
+
+.nav-items a{
+    margin-left: 20px;
+}
+
+.nav-items a img{
+    width: 30px;
+}
+
+.border{
+	margin:0.5cm;
+	border-width: 0.15cm;
+	border-color: black;
+	border-style:solid;
+	
+}
+
+.space{
+
+    margin:2em;
+    text-align: center;
+
+}
+

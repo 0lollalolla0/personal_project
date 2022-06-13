@@ -1,0 +1,78 @@
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+html {
+	
+    height: 100%;
+}
+
+body{
+	
+	height: 100%;
+	background: linear-gradient(to bottom right, rgb(113, 113, 142), #FAFCFF);
+	font-family: helvetica, arial, geneva, sans-serif; 
+	font-size: 1.0em;   /*Tamaño fuente*/
+	margin-left: 3em;   /*Tamaño margen izquierdo*/
+	margin-right: 3em;  /*Tamaño margen derecho*/
+	color: black;/* Color letra */
+	margin:0px !important;
+	
+}
+h1{
+	
+	text-align: center;
+	font-size: 2.5em; /*Tamaño fuente*/
+    font-weight: bold; /*Tipo de negrita*/
+    color:navy; /* Color de letra */
+    margin-top:0.5em;    /* Pone una linea rechulona */
+    margin-left:0.5em;
+    margin-right:0.5em;
+    margin-bottom: 0.5em;
+	
+	
+}
+
+.z1{
+	
+	text-align: center;
+	margin-top:0.5em;    /* Pone una linea rechulona */
+    margin-left:0.5em;
+    margin-right:0.5em;
+    margin-bottom: 0.5em;
+	border-style:solid;
+	border-width:2px;
+	border-color: black;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-bottom: 1em;
+	padding-top: 1em;
+	
+}
+
+.container{
+	
+	position: relative;
+	
+	
+}
+
+
+    
+
+
+
