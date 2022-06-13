@@ -1,0 +1,149 @@
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body{
+	background: linear-gradient(to bottom right, rgb(113, 113, 142), #FAFCFF);
+	font-family: helvetica, arial, geneva, sans-serif; 
+	font-size: 1.0em;   /*Tamaño fuente*/
+	margin-left: 3em;   /*Tamaño margen izquierdo*/
+	margin-right: 3em;  /*Tamaño margen derecho*/
+	color: black;/* Color letra */
+	
+}
+
+
+.comments{
+	background-color: rgb(78, 116, 109);
+	border: 2px solid black;
+	font-size: 1em; /*Tamaño fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: left;
+    border-color: black; 
+	
+	
+}
+
+.specy{
+	
+	background-color: rgb(78, 116, 109);
+	border: 2px solid black;
+	font-size: 1em; /*Tamaño fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: left;
+   
+	
+}
+
+h1{
+	
+	text-align: center;
+	font-size: 2.5em; /*Tamaño fuente*/
+    font-weight: bold; /*Tipo de negrita*/
+    color:navy; /* Color de letra */
+    margin:0;
+	
+}
+h2  {	/* Esto afecta a todo h2 */
+    font-size: 1.1em; /*Tamaño fuente*/
+    color:navy; /* Color de letra */
+    border:1em;   /*Tamaño borde*/
+    padding:2em;  /*Tamaño padding*/
+    margin:2em;    
+    text-align: center;
+    }
+        
+h3 {/* Esto afecta a todo h3 */
+    font-size: 1em; /*Tamaño fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: center;
+    border-color: black; 
+    }
+    
+h4 {/* Esto afecta a todo h4 */
+    font-size: 0.9em; /*Tamaño fuente*/
+    padding:0;
+    margin:0;
+    }
+    
+.description {
+	
+	background-color: rgb(78, 116, 109);
+	border: 2px solid black;
+    font-size: 1em; /*Tamaño fuente*/
+    padding:2em;
+    margin:2em;
+    text-align: left;
+    clear:both;
+    
+	
+}
+
+a:link { /* Pseudoclase a para links */
+    text-decoration: none;  /*links no visitado */
+    color: #000066;
+    font-weight: bold;
+    display:block;
+	width:120px;
+	background-color:red;
+	text-align:center;
+	padding:4px;
+	text-decoration:none;
+	text-transform:uppercase;
+    }
+span.linkheader a:link {  /* Pseudoclase compuesta a para links */
+    color: white;   /* Afecta a links no visitados descendientes de un span con clase linkheader*/
+    }
+
+span.linkheader a:visited {  /* Pseudoclase compuesta a para links */
+    color: white;  /* Afecta a links visitados descendientes de un span con clase linkheader*/
+    }
+
+span.linkheader a:hover {  /* Pseudoclase compuesta a para links */
+    color: red;  /* Afecta a links cuando pones el raton encima descendientes de un span con clase linkheader*/
+    }
+a:hover,a:active
+{
+background-color:pink;
+}
+ul{
+	
+list-style-type:none;
+margin:0;
+padding:0;
+overflow:hidden;
+
+}
+li{
+float:left;
+}
+
+.socialMedia{
+	
+	margin:2em;
+	
+}
+
+.generic{
+	
+	margin:2em;
+	
+}
